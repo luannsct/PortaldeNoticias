@@ -16,7 +16,12 @@ app.set('views', path.join(__dirname, '/views'));
 
 //Home
 app.get('/',(req,res)=>{
-    res.send('Home!');
+    //verificando se o usuario efetuou alguma busca
+    if(req.query.busca == null){
+        res.send('home')
+    }else{
+        res.send('Você buscou por: '+req.query.busca)
+    }
 })
 //Recupera a rota! ex. site/slug
 app.get('/:slug',(req,res)=>{
