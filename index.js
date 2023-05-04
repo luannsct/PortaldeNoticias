@@ -12,13 +12,13 @@ app.use(bodyParser.urlencoded({ //PARA SUPORTAR URLENCODE
 app.engine('html', require('ejs').renderFile);
 app.set('view engine','html');
 app.use('/public', express.static(path.join(__dirname,'public')));
-app.set('views', path.join(__dirname, '/views'));
+app.set('views', path.join(__dirname, '/Pages'));
 
 //Home
 app.get('/',(req,res)=>{
     //verificando se o usuario efetuou alguma busca
     if(req.query.busca == null){
-        res.send('home')
+        res.render('home',{})
     }else{
         res.send('Você buscou por: '+req.query.busca)
     }
